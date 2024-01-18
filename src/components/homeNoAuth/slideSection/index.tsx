@@ -1,4 +1,4 @@
-import { CourseType } from "../headerNoAuth/services/courseService";
+import { CourseType } from "../../../services/courseService";
 import { Container, Button } from "reactstrap";
 import Link from "next/link";
 import styles from "./styles.module.scss";
@@ -10,7 +10,7 @@ interface props {
 const SlideSection = function ({ newestCourses }: props) {
   return (
     <>
-      <Container fluid>
+      <Container fluid className="d-flex flex-column align-items-center py-5">
         <p className={styles.sectionTitle}>AULAS JÁ DISPONÍVEIS</p>
         <SlideComponent course={newestCourses} />
         <Link href="/register">

@@ -5,9 +5,7 @@ import PresentationSection from "@/src/components/homeNoAuth/presentationSection
 import CardsSection from "@/src/components/homeNoAuth/cardsSection";
 import SlideSection from "@/src/components/homeNoAuth/slideSection";
 import { GetStaticProps } from "next";
-import courseService, {
-  CourseType,
-} from "@/src/components/homeNoAuth/headerNoAuth/services/courseService";
+import courseService, { CourseType } from "@/src/services/courseService";
 import { ReactNode } from "react";
 
 interface IndexPageProps {
