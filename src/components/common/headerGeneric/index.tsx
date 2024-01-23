@@ -4,11 +4,11 @@ import { Container, Button } from "reactstrap";
 
 interface props {
   logoUrl: string;
-  bntUrl: string;
+  btnUrl: string;
   btnContent: string;
 }
 
-const HeaderGeneric = function ({ logoUrl, bntUrl, btnContent }: props) {
+const HeaderGeneric = function ({ logoUrl, btnUrl, btnContent }: props) {
   return (
     <div className={styles.header}>
       <Container className={styles.headerContainer}>
@@ -19,7 +19,7 @@ const HeaderGeneric = function ({ logoUrl, bntUrl, btnContent }: props) {
             className={styles.headerLogo}
           />
         </Link>
-        <Link href={bntUrl}>
+        <Link href={btnUrl}>
           <Button outline color="light" className={styles.headerBtn}>
             {btnContent}
           </Button>
