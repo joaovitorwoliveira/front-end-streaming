@@ -26,7 +26,7 @@ const courseService = {
 
     return res;
   },
-  getFeaturedCouses: async () => {
+  getFeaturedCourses: async () => {
     const token = sessionStorage.getItem("onebitflix-token");
 
     const res = await api
