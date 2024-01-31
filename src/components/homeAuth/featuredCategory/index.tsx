@@ -2,12 +2,16 @@ import styles from "../../../../styles/slideCategory.module.scss";
 import useSWR from "swr";
 import courseService from "../../../services/courseService";
 import SlideComponent from "../../common/slideComponent";
+import PageSpinner from "../../common/spinner";
 
 const FeaturedCategory = function () {
   const { data, error } = useSWR("/featured", courseService.getFeaturedCourses);
 
   if (error) return <p>Ocorreu um erro: {error.message}</p>;
-  if (!data) return <p>Carregando...</p>;
+  if (!data) {
+    return;
+    <PageSpinner />;
+  }
 
   const featuredCourses = data.data || [];
   return (
