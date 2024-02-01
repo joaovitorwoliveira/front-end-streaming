@@ -7,6 +7,9 @@ import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 
 import courseService, { CourseType } from "@/src/services/courseService";
+import PageSpinner from "@/src/components/common/spinner";
+import EpisodeList from "@/src/components/episodeList";
+import Footer from "@/src/components/common/footer";
 
 const CoursePage = function () {
   const [course, setCourse] = useState<CourseType>();
@@ -53,6 +56,8 @@ const CoursePage = function () {
     }
   };
 
+  if (course === undefined) return <PageSpinner />;
+
   return (
     <>
       <Head>
@@ -74,7 +79,11 @@ const CoursePage = function () {
         <Container className={styles.courseInfo}>
           <p className={styles.courseTitle}>{course?.name}</p>
           <p className={styles.courseDescription}>{course?.synopsis}</p>
-          <Button outline className={styles.courseBtn}>
+          <Button
+            outline
+            className={styles.courseBtn}
+            disabled={course?.episodes?.length === 0 ? true : false}
+          >
             ASSISTIR AGORA!
             <img
               src="/buttonPlay.svg"
@@ -115,6 +124,24 @@ const CoursePage = function () {
             )}
           </div>
         </Container>
+        <Container className={styles.episodeInfo}>
+          <p className={styles.episodeDivision}>EPISÓDIOS</p>
+          <p className={styles.episodeLength}>
+            {course?.episodes?.length} episódios
+          </p>
+          {course?.episodes?.length === 0 ? (
+            <p>
+              <strong>
+                Não temos eposódios ainda, volte outra hora! &#x1F606;&#x1F918;
+              </strong>
+            </p>
+          ) : (
+            course?.episodes?.map((episode) => (
+              <EpisodeList key={episode.id} episode={episode} />
+            ))
+          )}
+        </Container>
+        <Footer />
       </main>
     </>
   );
